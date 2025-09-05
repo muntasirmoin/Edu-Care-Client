@@ -11,20 +11,37 @@ export default function ThemeToggle() {
   return (
     <div>
       <Toggle
+        role="switch"
+        aria-checked={theme === "dark"}
+        aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
         variant="outline"
-        className="group data-[state=on]:hover:bg-muted text-muted-foreground data-[state=on]:text-muted-foreground data-[state=on]:hover:text-foreground size-8 rounded-full border-none shadow-none data-[state=on]:bg-transparent"
+        className="
+          group size-10 rounded-full border-none shadow-none cursor-pointer
+          transition-all duration-200
+          bg-violet-100 dark:bg-violet-700/30
+          hover:bg-violet-200 dark:hover:bg-violet-700
+          data-[state=on]:bg-violet-700 dark:data-[state=on]:bg-violet-200
+          data-[state=on]:hover:bg-violet-800/80 dark:data-[state=on]:hover:hover:bg-violet-300/30
+        "
         pressed={theme === "dark"}
         onPressedChange={() => setTheme(theme === "dark" ? "light" : "dark")}
-        aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
       >
         <MoonIcon
-          size={16}
-          className="shrink-0 scale-0 opacity-0 transition-all group-data-[state=on]:scale-100 group-data-[state=on]:opacity-100"
+          size={18}
+          className="
+            shrink-0 scale-0 opacity-0 transition-all duration-200
+            group-data-[state=on]:scale-100 group-data-[state=on]:opacity-100
+            text-violet-900 dark:text-violet-800
+          "
           aria-hidden="true"
         />
         <SunIcon
-          size={16}
-          className="absolute shrink-0 scale-100 opacity-100 transition-all group-data-[state=on]:scale-0 group-data-[state=on]:opacity-0"
+          size={18}
+          className="
+            absolute shrink-0 scale-100 opacity-100 transition-all duration-200
+            group-data-[state=on]:scale-0 group-data-[state=on]:opacity-0
+            text-violet-800/80 dark:text-violet-100
+          "
           aria-hidden="true"
         />
       </Toggle>
