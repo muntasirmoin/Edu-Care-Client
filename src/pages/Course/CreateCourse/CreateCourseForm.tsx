@@ -30,13 +30,17 @@ import {
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Textarea } from "@/components/ui/textarea";
-import { Upload } from "lucide-react";
+// import { Upload } from "lucide-react";
 import React from "react";
+import { useAddCourseMutation } from "@/redux/features/Course/course.api";
+import { toast } from "sonner";
 
 type CourseFormValues = z.infer<typeof createCourseZodSchema>;
 
 export default function CreateCourseForm() {
   const [preview, setPreview] = React.useState<string | null>(null);
+
+  const [createCourse] = useAddCourseMutation();
 
   const form = useForm<CourseFormValues>({
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -73,8 +77,37 @@ export default function CreateCourseForm() {
 
   //
 
-  const onSubmit = (values: CourseFormValues) => {
+  const onSubmit = async (values: CourseFormValues) => {
     console.log(values);
+    const { image, ...courseData } = values;
+    const formData = new FormData();
+
+    formData.append("data", JSON.stringify(courseData));
+    formData.append("file", image as File);
+
+    // console.log(formData.get("data"));
+    // console.log(formData.get("file"));
+
+    try {
+      const res = await createCourse(formData).unwrap();
+      console.log("res:", res);
+      toast.success("Course Added");
+
+      form.reset({
+        title: "",
+        description: "",
+        category: "",
+        seat: 0,
+        price: 0,
+        duration: 0,
+        instructor: "",
+        status: "",
+        image: undefined,
+      });
+      setPreview(null);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -157,6 +190,7 @@ export default function CreateCourseForm() {
                     <FormItem className="flex-1">
                       <FormLabel>Category</FormLabel>
                       <Select
+                        key={field.value || ""}
                         onValueChange={field.onChange}
                         defaultValue={field.value}
                       >
@@ -261,6 +295,7 @@ export default function CreateCourseForm() {
                     <FormItem className="flex-1">
                       <FormLabel>Status</FormLabel>
                       <Select
+                        key={field.value || ""}
                         onValueChange={field.onChange}
                         defaultValue={field.value}
                       >
@@ -292,10 +327,6 @@ export default function CreateCourseForm() {
                         accept="image/*"
                         onChange={handleImageUpload}
                       />
-                      <Button type="button" variant="secondary">
-                        <Upload className="mr-2 h-4 w-4" />
-                        Upload
-                      </Button>
                     </div>
                   </FormControl>
                   {preview && (

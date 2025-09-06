@@ -50,7 +50,7 @@ export const createCourseZodSchema = z.object({
 
 export const CourseStatusEnum = {
   Draft: "draft",
-  Published: "card",
+  Published: "published",
 } as const;
 
 export type CourseStatusEnum = keyof typeof CourseStatusEnum;
