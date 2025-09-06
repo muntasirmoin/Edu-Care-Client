@@ -1,5 +1,5 @@
 // Footer.tsx
-import Logo from "@/components/logo";
+
 import {
   Instagram,
   Facebook,
@@ -11,6 +11,7 @@ import {
 import { Link } from "react-router-dom";
 
 export default function Footer() {
+  const LogoImage = `https://res.cloudinary.com/dta2gcxsl/image/upload/v1757134951/logoEducare-Photoroom_nkm3rp.png`;
   return (
     <footer className="bg-violet-50 dark:bg-violet-900 border-t border-violet-200 dark:border-violet-700 transition-colors">
       {/* Main 4-column content */}
@@ -23,16 +24,20 @@ export default function Footer() {
               to="/"
               className="text-violet-700 dark:text-violet-300 hover:text-violet-500 dark:hover:text-violet-200 transition text-lg font-bold"
             >
-              <Logo />
+              <img
+                src={LogoImage}
+                alt="EduCare Logo"
+                className="h-20 w-auto dark:invert" // adjust size as needed
+              />
             </Link>
-            <span className="text-violet-700 dark:text-violet-200 font-bold text-lg">
+            {/* <span className="text-violet-700 dark:text-violet-200 font-bold text-lg">
               EduCare
-            </span>
+            </span> */}
           </div>
         </div>
 
         {/* 2. Quick Links */}
-        <div className="flex flex-col gap-2">
+        <div className="flex items-center flex-col gap-2">
           <h3 className="font-semibold text-violet-700 dark:text-violet-200 mb-2">
             Quick Links
           </h3>
