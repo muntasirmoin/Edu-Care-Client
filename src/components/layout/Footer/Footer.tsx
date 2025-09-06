@@ -15,7 +15,7 @@ export default function Footer() {
     <footer className="bg-violet-50 dark:bg-violet-900 border-t border-violet-200 dark:border-violet-700 transition-colors">
       {/* Main 4-column content */}
       {/* <div className="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8"> */}
-      <div className="mx-auto px-4 py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+      <div className="w-[95%] mx-auto px-1 py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
         {/* 1. Logo & Brand */}
         <div className="flex flex-col items-start justify-center gap-2">
           <div className="flex items-center gap-2">

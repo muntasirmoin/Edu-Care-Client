@@ -198,7 +198,7 @@ export default function Navbar() {
       bg-gradient-to-r from-violet-50/80 via-violet-100/70 to-violet-50/80 dark:from-violet-900/80 dark:via-violet-800/70 dark:to-violet-900/80"
     >
       {/* <div className="flex h-16 items-center justify-between max-w-7xl mx-auto px-4 md:px-6"> */}
-      <div className="flex h-16 items-center justify-between  mx-auto px-4 md:px-6">
+      <div className="flex h-16 items-center justify-between w-[95%]  mx-auto px-4 md:px-1">
         {/* Left side */}
         <div className="flex flex-1 items-center gap-4">
           {/* Mobile menu trigger */}
