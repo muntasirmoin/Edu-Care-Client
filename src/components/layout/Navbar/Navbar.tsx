@@ -21,21 +21,35 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { CartButton } from "@/pages/Cart/cartButton";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Logo from "@/assets/Logo/Logo";
+import { useUserInfoQuery } from "@/redux/features/User/user.api";
+import { role } from "@/constants/role";
+import { authApi, useLogoutMutation } from "@/redux/features/Auth/auth.api";
+import { useAppDispatch } from "@/redux/hook";
 
 // Navigation links
 const navigationLinks = [
-  { href: "/", label: "Home", icon: HomeIcon },
-  { href: "#", label: "Courses", icon: LayersIcon },
-  { href: "#", label: "About", icon: FileTextIcon },
-  { href: "#", label: "Faq", icon: UsersIcon },
-  { href: "/contact", label: "Contact", icon: UsersIcon },
-  { href: "#", label: "Dashboard", icon: UsersIcon },
+  { href: "/", label: "Home", icon: HomeIcon, role: "PUBLIC" },
+  { href: "#", label: "Courses", icon: LayersIcon, role: "PUBLIC" },
+  { href: "#", label: "About", icon: FileTextIcon, role: "PUBLIC" },
+  { href: "#", label: "Faq", icon: UsersIcon, role: "PUBLIC" },
+  { href: "/contact", label: "Contact", icon: UsersIcon, role: "PUBLIC" },
+  { href: "#", label: "Dashboard", icon: UsersIcon, role: role.ADMIN },
 ];
 
 export default function Navbar() {
   const location = useLocation();
+  const { data } = useUserInfoQuery(undefined);
+  const [logout] = useLogoutMutation();
+  const dispatch = useAppDispatch();
+
+  const handleLogout = async () => {
+    await logout(undefined);
+    dispatch(authApi.util.resetApiState());
+  };
+
+  console.log("info", data);
 
   return (
     <header
@@ -81,7 +95,9 @@ export default function Navbar() {
                 <NavigationMenuList className="flex-col items-start gap-1">
                   {navigationLinks.map((link, index) => {
                     const Icon = link.icon;
-                    return (
+                    const canShow =
+                      link.role === "PUBLIC" || link.role === data?.data?.role;
+                    return canShow ? (
                       <NavigationMenuItem key={index} className="w-full">
                         <NavigationMenuLink
                           href={link.href}
@@ -95,7 +111,7 @@ export default function Navbar() {
                           <span>{link.label}</span>
                         </NavigationMenuLink>
                       </NavigationMenuItem>
-                    );
+                    ) : null;
                   })}
                 </NavigationMenuList>
               </NavigationMenu>
@@ -114,25 +130,29 @@ export default function Navbar() {
           <NavigationMenu className="hidden md:flex">
             <NavigationMenuList className="gap-3">
               <TooltipProvider>
-                {navigationLinks.map((link) => (
-                  <NavigationMenuItem key={link.label}>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <NavigationMenuLink
-                          href={link.href}
-                          className={`px-4 py-2 rounded-md text-sm font-bold transition
+                {navigationLinks.map((link) => {
+                  const canShow =
+                    link.role === "PUBLIC" || link.role === data?.data?.role;
+                  return canShow ? (
+                    <NavigationMenuItem key={link.label}>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <NavigationMenuLink
+                            href={link.href}
+                            className={`px-4 py-2 rounded-md text-sm font-bold transition
     ${
       location.pathname === link.href
         ? "bg-violet-300/30 dark:bg-violet-700/30 text-violet-800 dark:text-violet-100"
         : "text-violet-600 dark:text-violet-300 hover:text-violet-500 dark:hover:text-violet-200 hover:bg-violet-300/30 dark:hover:bg-violet-700/30"
     }`}
-                        >
-                          {link.label}
-                        </NavigationMenuLink>
-                      </TooltipTrigger>
-                    </Tooltip>
-                  </NavigationMenuItem>
-                ))}
+                          >
+                            {link.label}
+                          </NavigationMenuLink>
+                        </TooltipTrigger>
+                      </Tooltip>
+                    </NavigationMenuItem>
+                  ) : null;
+                })}
               </TooltipProvider>
             </NavigationMenuList>
           </NavigationMenu>
@@ -141,8 +161,29 @@ export default function Navbar() {
         {/* Right side */}
         <div className="flex items-center gap-3">
           <ThemeToggle />
-          <CartButton count={3} />
-          <UserMenu />
+          {data?.data?.email ? (
+            <>
+              <CartButton count={3} />
+              <UserMenu />
+              {/* logout */}
+              <Button
+                onClick={handleLogout}
+                // variant="outline"
+                className="text-sm cursor-pointer hover:bg-green-500 hover:text-white hover:border-green-100"
+              >
+                Logout
+              </Button>
+            </>
+          ) : (
+            <>
+              <Button
+                asChild
+                className="text-sm cursor-pointer hover:bg-green-500 hover:text-white hover:border-green-100"
+              >
+                <Link to="/login">Login</Link>
+              </Button>
+            </>
+          )}
         </div>
       </div>
     </header>
