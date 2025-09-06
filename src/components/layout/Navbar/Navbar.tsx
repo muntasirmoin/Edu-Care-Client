@@ -35,7 +35,7 @@ const navigationLinks = [
   { href: "#", label: "About", icon: FileTextIcon, role: "PUBLIC" },
   { href: "#", label: "Faq", icon: UsersIcon, role: "PUBLIC" },
   { href: "/contact", label: "Contact", icon: UsersIcon, role: "PUBLIC" },
-  { href: "#", label: "Dashboard", icon: UsersIcon, role: role.ADMIN },
+  { href: "/admin", label: "Dashboard", icon: UsersIcon, role: role.ADMIN },
 ];
 
 export default function Navbar() {
@@ -169,7 +169,7 @@ export default function Navbar() {
               <Button
                 onClick={handleLogout}
                 // variant="outline"
-                className="text-sm cursor-pointer hover:bg-green-500 hover:text-white hover:border-green-100"
+                className="bg-violet-700 hover:bg-violet-800 dark:bg-violet-200 dark:hover:bg-violet-300 text-white dark:text-gray-900 font-semibold px-6 py-3 rounded-lg shadow-lg transition-all"
               >
                 Logout
               </Button>
@@ -178,7 +178,7 @@ export default function Navbar() {
             <>
               <Button
                 asChild
-                className="text-sm cursor-pointer hover:bg-green-500 hover:text-white hover:border-green-100"
+                className="bg-violet-700 hover:bg-violet-800 dark:bg-violet-200 dark:hover:bg-violet-300 text-white dark:text-gray-900 font-semibold px-6 py-3 rounded-lg shadow-lg transition-all"
               >
                 <Link to="/login">Login</Link>
               </Button>
