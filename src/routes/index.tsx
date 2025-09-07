@@ -13,6 +13,8 @@ import { userSidebarItems } from "./userSidebarItems";
 import { generateRoutes } from "@/utils/generateRoutes";
 import { adminSidebarItems } from "./adminSidebarItems";
 import type { TRole } from "@/types";
+import NavCourse from "@/pages/Course/NavCourse/NavCourse";
+import CourseDetailsPage from "@/pages/Course/NavCourse/CourseDetailsPage";
 export const router = createBrowserRouter([
   {
     Component: App,
@@ -26,6 +28,14 @@ export const router = createBrowserRouter([
       {
         Component: Contact,
         path: "contact",
+      },
+      {
+        Component: NavCourse,
+        path: "courses",
+      },
+      {
+        Component: CourseDetailsPage,
+        path: "/courses/:id",
       },
     ],
   },

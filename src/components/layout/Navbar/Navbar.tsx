@@ -1,4 +1,4 @@
-import { FileTextIcon, HomeIcon, LayersIcon, UsersIcon } from "lucide-react";
+import { FileTextIcon, HomeIcon, UsersIcon } from "lucide-react";
 
 import ThemeToggle from "@/components/theme-toggle";
 import UserMenu from "@/components/user-menu";
@@ -31,7 +31,7 @@ import { useAppDispatch } from "@/redux/hook";
 // Navigation links
 const navigationLinks = [
   { href: "/", label: "Home", icon: HomeIcon, role: "PUBLIC" },
-  { href: "#", label: "Courses", icon: LayersIcon, role: "PUBLIC" },
+  { href: "/courses", label: "Courses", role: "PUBLIC" },
   { href: "#", label: "About", icon: FileTextIcon, role: "PUBLIC" },
   { href: "#", label: "Faq", icon: UsersIcon, role: "PUBLIC" },
   { href: "/contact", label: "Contact", icon: UsersIcon, role: "PUBLIC" },
@@ -94,7 +94,6 @@ export default function Navbar() {
               <NavigationMenu className="max-w-none *:w-full">
                 <NavigationMenuList className="flex-col items-start gap-1">
                   {navigationLinks.map((link, index) => {
-                    const Icon = link.icon;
                     const canShow =
                       link.role === "PUBLIC" || link.role === data?.data?.role;
                     return canShow ? (
@@ -104,10 +103,6 @@ export default function Navbar() {
                           className="flex items-center gap-2 px-3 py-2 rounded-md text-violet-600 dark:text-violet-300 hover:text-violet-500 dark:hover:text-violet-200 hover:bg-violet-100/30 dark:hover:bg-violet-700/30 transition"
                           // active={link.active}
                         >
-                          <Icon
-                            size={16}
-                            className="text-violet-600 dark:text-violet-300"
-                          />
                           <span>{link.label}</span>
                         </NavigationMenuLink>
                       </NavigationMenuItem>
