@@ -64,4 +64,5 @@ export const {
   useAddCourseMutation,
   useGetCoursesQuery,
   useUpdateCourseMutation,
+  useDeleteCourseMutation,
 } = courseApi;

@@ -3,7 +3,7 @@ import CourseUpdateTable from "@/pages/Course/CourseUpdateTable/CourseUpdateTabl
 const UpdateCourse = () => {
   return (
     <>
-      <CourseUpdateTable limitNumber={10} tableTitle="UpdateCourse's" />
+      <CourseUpdateTable limitNumber={10} tableTitle="Update Course's" />
     </>
   );
 };
