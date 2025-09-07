@@ -15,6 +15,7 @@ import { adminSidebarItems } from "./adminSidebarItems";
 import type { TRole } from "@/types";
 import NavCourse from "@/pages/Course/NavCourse/NavCourse";
 import CourseDetailsPage from "@/pages/Course/NavCourse/CourseDetailsPage";
+import CartPage from "@/pages/Cart/CartPage";
 export const router = createBrowserRouter([
   {
     Component: App,
@@ -34,8 +35,12 @@ export const router = createBrowserRouter([
         path: "courses",
       },
       {
-        Component: CourseDetailsPage,
+        Component: withAuth(CourseDetailsPage, role.USER as TRole),
         path: "/courses/:id",
+      },
+      {
+        Component: withAuth(CartPage, role.USER as TRole),
+        path: "/cart",
       },
     ],
   },

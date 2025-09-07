@@ -29,6 +29,27 @@ export const cartApi = baseApi.injectEndpoints({
       invalidatesTags: ["CART"],
     }),
 
+    // get cart
+    getCart: builder.query({
+      query: (params) => {
+        if (!params) {
+          return {
+            url: "/cart",
+            method: "GET",
+          };
+        }
+
+        // If params exist, pass them (page & limit)
+        return {
+          url: "/cart",
+          method: "GET",
+          params,
+        };
+      },
+      providesTags: ["CART"],
+      // transformResponse: (response) => response.data,
+    }),
+
     // Get user cart items
     // getCartItems: builder.query<{ data: ICartItem[] }, void>({
     //   query: () => ({
@@ -39,19 +60,19 @@ export const cartApi = baseApi.injectEndpoints({
     // }),
 
     // Remove item from cart
-    // removeCartItem: builder.mutation<{ message: string }, string>({
-    //   query: (id) => ({
-    //     url: `/carts/${id}`,
-    //     method: "DELETE",
-    //   }),
-    //   invalidatesTags: ["CART"],
-    // }),
+    removeCartItem: builder.mutation<{ message: string }, string>({
+      query: (id) => ({
+        url: `/cart/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["CART"],
+    }),
     //
   }),
 });
 
 export const {
   useAddToCartMutation,
-  //   useGetCartItemsQuery,
-  //   useRemoveCartItemMutation,
+  useGetCartQuery,
+  useRemoveCartItemMutation,
 } = cartApi;

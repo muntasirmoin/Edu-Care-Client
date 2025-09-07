@@ -81,7 +81,7 @@ export default function CourseDetailsPage() {
     <div className=" bg-violet-50 dark:bg-violet-900 flex justify-center items-start py-2 px-4">
       <div className="bg-white dark:bg-violet-900 shadow-2xl rounded-2xl max-w-3xl w-full p-6 sm:p-8 mx-auto transition-all">
         {/* Course Image */}
-        <div className="w-full h-64 sm:h-80 overflow-hidden rounded-xl mb-6 shadow-inner">
+        <div className="w-full h-52 sm:h-52 overflow-hidden rounded-xl mb-2 shadow-inner">
           <img
             src={course.image}
             alt={course.title}

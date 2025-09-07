@@ -143,7 +143,12 @@ export default function NavCourse() {
                 <button
                   disabled={course.seat <= 0 || addIsLoading}
                   onClick={() => handleAddToCart(course?._id)}
-                  className="cursor-pointer flex-1 bg-violet-500 hover:bg-violet-600 dark:bg-violet-200 dark:hover:bg-violet-300 text-white dark:text-gray-900 font-semibold py-2 rounded-lg transition"
+                  className={`flex-1 py-2 rounded-lg font-semibold transition
+    ${
+      course.seat <= 0
+        ? "bg-gray-300 dark:bg-gray-600 text-gray-500 cursor-not-allowed"
+        : " cursor-pointer bg-violet-500 hover:bg-violet-600 dark:bg-violet-200 dark:hover:bg-violet-300 text-white dark:text-gray-900"
+    }`}
                 >
                   Add to Cart
                 </button>

@@ -2,12 +2,12 @@ import { ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
+import { useGetCartQuery } from "@/redux/features/Cart/cart.api";
 
-interface CartButtonProps {
-  count?: number;
-}
-
-export function CartButton({ count = 0 }: CartButtonProps) {
+export function CartButton() {
+  const { data: cartData, isLoading: cartLoading } = useGetCartQuery(undefined);
+  // console.log("cartData", cartData?.data?.length);
+  const totalCartData = cartData?.data?.length;
   return (
     <Link to="/cart">
       <Button
@@ -23,7 +23,7 @@ export function CartButton({ count = 0 }: CartButtonProps) {
         <ShoppingCart className="h-5 w-5" />
         <span className="hidden sm:inline">Cart</span>
 
-        {count > 0 && (
+        {totalCartData > 0 && (
           <Badge
             variant="destructive"
             className="
@@ -34,7 +34,7 @@ export function CartButton({ count = 0 }: CartButtonProps) {
               text-white dark:text-black
             "
           >
-            {count}
+            {cartLoading ? "..." : `${totalCartData}`}
           </Badge>
         )}
       </Button>

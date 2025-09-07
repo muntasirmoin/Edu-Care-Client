@@ -159,7 +159,7 @@ export default function Navbar() {
           {data?.data?.email ? (
             <>
               {/* <CartButton count={3} /> */}
-              {data?.data?.role === role.USER && <CartButton count={3} />}
+              {data?.data?.role === role.USER && <CartButton />}
               <UserMenu />
               {/* logout */}
               <Button
