@@ -3,6 +3,8 @@ import { useGetCoursesQuery } from "@/redux/features/Course/course.api";
 import { toast } from "sonner";
 import type { ICourse } from "../CourseDeleteTable/CourseDeleteTable";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useAddToCartMutation } from "@/redux/features/Cart/cart.api";
+import { useUserInfoQuery } from "@/redux/features/User/user.api";
 
 export default function CourseDetailsPage() {
   const { id } = useParams<{ id: string }>();
@@ -11,6 +13,35 @@ export default function CourseDetailsPage() {
   const { data, isLoading, isError } = useGetCoursesQuery(undefined);
 
   const course = data?.data?.find((c: ICourse) => c._id === id);
+
+  const { data: userData } = useUserInfoQuery(undefined);
+
+  const userId = userData?.data?._id;
+  console.log(data);
+  // handle add to cart
+
+  const [addToCart, { isLoading: addIsLoading }] = useAddToCartMutation();
+  const handleAddToCart = async (courseId: string) => {
+    try {
+      const res = await addToCart({ userId, courseId }).unwrap();
+      if (res) {
+        toast.success("Added to cart!");
+      }
+      console.log("addToCart Res:", res);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      if (error?.data?.message === "Already enrolled in this course") {
+        toast.error(`Please Login!:${error?.data?.message}`);
+      } else if (error?.data?.message === "Course not found") {
+        toast.error(`${error?.data?.message}`);
+      } else if (error?.data?.message === "Course already in cart") {
+        toast.error(`${error?.data?.message}`);
+      } else {
+        toast.error("Failed to add item to cart");
+        navigate("/login");
+      }
+    }
+  };
 
   if (isLoading) {
     return (
@@ -97,11 +128,16 @@ export default function CourseDetailsPage() {
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-4">
           <button
-            disabled={course.seat <= 0}
-            onClick={() => toast.success("Added to cart!")}
-            className="cursor-pointer flex-1 bg-violet-600 hover:bg-violet-700 dark:bg-violet-200 dark:hover:bg-violet-300 text-white dark:text-gray-900 font-bold py-3 rounded-xl shadow-lg transition-all text-lg"
+            disabled={addIsLoading || course.seat <= 0}
+            onClick={() => handleAddToCart(course?._id)}
+            className={`flex-1 py-3 rounded-xl shadow-lg text-lg font-bold transition-all
+    ${
+      addIsLoading || course.seat <= 0
+        ? "bg-violet-300 dark:bg-violet-500 text-gray-400 cursor-not-allowed"
+        : "bg-violet-600 hover:bg-violet-700 dark:bg-violet-200 dark:hover:bg-violet-300 text-white dark:text-gray-900"
+    }`}
           >
-            Add to Cart
+            {addIsLoading ? " Adding to Cart.." : " Add to Cart"}
           </button>
           <button
             onClick={() => navigate(-1)}

@@ -7,6 +7,8 @@ import { useGetCoursesQuery } from "@/redux/features/Course/course.api";
 import { useState } from "react";
 import TitleSubTitle from "@/components/layout/Shared/TitleSubTitle";
 import { useNavigate } from "react-router-dom";
+import { useAddToCartMutation } from "@/redux/features/Cart/cart.api";
+import { useUserInfoQuery } from "@/redux/features/User/user.api";
 
 // type CourseCardProps = {
 //   courses: ICourse[];
@@ -28,6 +30,36 @@ export default function NavCourse() {
 
   const courseMapData = coursesData?.data ?? [];
   const totalPages = coursesData?.meta?.totalPage ?? 1;
+  const { data } = useUserInfoQuery(undefined);
+
+  const userId = data?.data?._id;
+  console.log(data);
+  // handle add to cart
+
+  const [addToCart, { isLoading: addIsLoading }] = useAddToCartMutation();
+  const handleAddToCart = async (courseId: string) => {
+    try {
+      const res = await addToCart({ userId, courseId }).unwrap();
+      if (res) {
+        toast.success("Added to cart!");
+      }
+      console.log("addToCart Res:", res);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      if (error?.data?.message === "Already enrolled in this course") {
+        toast.error(`Please Login!:${error?.data?.message}`);
+      } else if (error?.data?.message === "Course not found") {
+        toast.error(`${error?.data?.message}`);
+      } else if (error?.data?.message === "Course already in cart") {
+        toast.error(`${error?.data?.message}`);
+      } else {
+        toast.error("Failed to add item to cart");
+        navigate("/login");
+      }
+    }
+  };
+
+  // handle add to cart end
 
   // Skeleton loader
   if (isLoading) {
@@ -109,8 +141,8 @@ export default function NavCourse() {
               {/* Action Buttons */}
               <div className="mt-4 flex gap-2">
                 <button
-                  disabled={course.seat <= 0}
-                  onClick={() => toast.success("Added to cart!")}
+                  disabled={course.seat <= 0 || addIsLoading}
+                  onClick={() => handleAddToCart(course?._id)}
                   className="cursor-pointer flex-1 bg-violet-500 hover:bg-violet-600 dark:bg-violet-200 dark:hover:bg-violet-300 text-white dark:text-gray-900 font-semibold py-2 rounded-lg transition"
                 >
                   Add to Cart
