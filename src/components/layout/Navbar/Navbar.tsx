@@ -163,7 +163,8 @@ export default function Navbar() {
           <ThemeToggle />
           {data?.data?.email ? (
             <>
-              <CartButton count={3} />
+              {/* <CartButton count={3} /> */}
+              {data?.data?.role === role.USER && <CartButton count={3} />}
               <UserMenu />
               {/* logout */}
               <Button

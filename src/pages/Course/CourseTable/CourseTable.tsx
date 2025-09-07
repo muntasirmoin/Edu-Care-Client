@@ -185,7 +185,7 @@ export default function CourseTable({
             <TableHead className="text-center">Image</TableHead>
             <TableHead className="text-center">Title</TableHead>
             <TableHead className="text-center">Instructor</TableHead>
-            <TableHead className="hidden md:table-cell">Description</TableHead>
+            <TableHead className="text-cebter">Description</TableHead>
             <TableHead className="text-center">Seat</TableHead>
             <TableHead className="text-center">Price</TableHead>
             <TableHead className="text-center">Duration</TableHead>

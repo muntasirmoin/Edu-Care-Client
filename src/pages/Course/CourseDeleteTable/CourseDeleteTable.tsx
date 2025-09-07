@@ -219,7 +219,7 @@ export default function CourseDeleteTable({
             <TableHead className="text-center">Action</TableHead>
             <TableHead className="text-center">Title</TableHead>
             <TableHead className="text-center">Instructor</TableHead>
-            <TableHead className="hidden md:table-cell">Description</TableHead>
+            <TableHead className="text-center">Description</TableHead>
             <TableHead className="text-center">Seat</TableHead>
             <TableHead className="text-center">Price</TableHead>
             <TableHead className="text-center">Duration</TableHead>
