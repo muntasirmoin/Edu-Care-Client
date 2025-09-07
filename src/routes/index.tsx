@@ -16,6 +16,8 @@ import type { TRole } from "@/types";
 import NavCourse from "@/pages/Course/NavCourse/NavCourse";
 import CourseDetailsPage from "@/pages/Course/NavCourse/CourseDetailsPage";
 import CartPage from "@/pages/Cart/CartPage";
+import Enrollment from "@/pages/Enrollement/Enrollement";
+import FAQPage from "@/pages/Faq/FAQPage";
 export const router = createBrowserRouter([
   {
     Component: App,
@@ -31,6 +33,10 @@ export const router = createBrowserRouter([
         path: "contact",
       },
       {
+        Component: FAQPage,
+        path: "faq",
+      },
+      {
         Component: NavCourse,
         path: "courses",
       },
@@ -41,6 +47,10 @@ export const router = createBrowserRouter([
       {
         Component: withAuth(CartPage, role.USER as TRole),
         path: "/cart",
+      },
+      {
+        Component: withAuth(Enrollment, role.USER as TRole),
+        path: "/enrollment",
       },
     ],
   },

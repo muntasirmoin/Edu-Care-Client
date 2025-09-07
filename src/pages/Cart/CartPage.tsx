@@ -1,6 +1,7 @@
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 import {
+  useCheckoutCartMutation,
   useGetCartQuery,
   useRemoveCartItemMutation,
 } from "@/redux/features/Cart/cart.api";
@@ -28,8 +29,17 @@ const CartPage = () => {
     }
   };
 
-  const handleCheckout = () => {
-    navigate("/checkout");
+  const [checkoutCart, { isLoading }] = useCheckoutCartMutation();
+
+  const handleCheckout = async () => {
+    try {
+      await checkoutCart().unwrap(); // call backend
+      toast.success("Checkout successful! Courses enrolled.");
+      navigate("/cart"); // redirect to success page
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      toast.error(error.data?.message || "Checkout failed. Please try again.");
+    }
   };
 
   if (cartLoading) {
@@ -79,15 +89,16 @@ const CartPage = () => {
       {/* Total & Checkout */}
       <div className="mt-3 mb-3 flex flex-col sm:flex-row justify-between items-center gap-4">
         <div className="text-xl font-bold text-gray-900 dark:text-white">
-          <span className="inline-block py-3 px-6  bg-violet-100 dark:bg-violet-700 text-violet-800 dark:text-violet-100 font-bold px-4 py-1 rounded-full text-xl uppercase tracking-wide">
+          <span className="inline-block py-3 px-6  bg-violet-100 dark:bg-violet-700 text-violet-800 dark:text-violet-100 font-bold  rounded-full text-xl uppercase tracking-wide">
             🛒 Total: {totalPrice} Tk
           </span>
         </div>
         <button
           onClick={handleCheckout}
+          disabled={isLoading || !cartData?.data?.length}
           className="bg-green-500 mr-0.5  cursor-pointer hover:bg-green-600 dark:bg-green-700 dark:hover:bg-green-600 text-white font-bold py-3 px-6 rounded-xl shadow-lg transition-all text-lg"
         >
-          Proceed to Checkout
+          {isLoading ? "Processing..." : "Checkout"}
         </button>
       </div>
 

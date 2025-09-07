@@ -68,6 +68,16 @@ export const cartApi = baseApi.injectEndpoints({
       invalidatesTags: ["CART"],
     }),
     //
+    // checkout
+    checkoutCart: builder.mutation<void, void>({
+      query: () => ({
+        url: "/cart/checkout",
+        method: "POST",
+      }),
+      invalidatesTags: ["CART"],
+    }),
+
+    //
   }),
 });
 
@@ -75,4 +85,5 @@ export const {
   useAddToCartMutation,
   useGetCartQuery,
   useRemoveCartItemMutation,
+  useCheckoutCartMutation,
 } = cartApi;

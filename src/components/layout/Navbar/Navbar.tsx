@@ -33,8 +33,10 @@ const navigationLinks = [
   { href: "/", label: "Home", icon: HomeIcon, role: "PUBLIC" },
   { href: "/courses", label: "Courses", role: "PUBLIC" },
   { href: "#", label: "About", icon: FileTextIcon, role: "PUBLIC" },
-  { href: "#", label: "Faq", icon: UsersIcon, role: "PUBLIC" },
+  { href: "/faq", label: "Faq", icon: UsersIcon, role: "PUBLIC" },
   { href: "/contact", label: "Contact", icon: UsersIcon, role: "PUBLIC" },
+  { href: "/enrollment", label: "Enrollment", role: role.USER },
+
   { href: "/admin", label: "Dashboard", icon: UsersIcon, role: role.ADMIN },
 ];
 
