@@ -3,7 +3,7 @@
 <h3 align="center">Develop Edu Care course enrollment System built with a modern React ecosystem MERN stack. Modern tools in the React ecosystem, including React Router, Redux Toolkit, RTK Query, and TypeScript. </h3>
 
 <p align="center">
-🎓 EduCare – Course Enrollment System
+🎓 EduCare – Course Enrollment System 🎓
 
 EduCare is a full-stack course enrollment platform designed to simplify the process of discovering, enrolling in, and managing courses. The system provides an engaging user experience for learners and powerful tools for administrators to manage courses, users, and enrollments.
 Edu Care delivers a clean, modern learning marketplace: discover courses, inspect details, enroll , and track learning. The app features authentication with multi‑role permissions, responsive UI, analytics dashboards, and a purchase flow.
@@ -38,70 +38,35 @@ Edu Care delivers a clean, modern learning marketplace: discover courses, inspec
 
 ---
 
-**Vercel Deploy Link**
-
-- Backend Deploy
-
-```bash
-https://edu-care-server-ten.vercel.app
-```
-
-- Frontend Deploy
-
-```bash
-https://edu-care-client-flax.vercel.app
-```
-
----
-
-**Github Code Link**
-
-- Backend
-
-```bash
-https://github.com/muntasirmoin/Edu-Care-Server.git
-```
-
-- Frontend
-
-```bash
-https://github.com/muntasirmoin/Edu-Care-Client.git
-```
-
----
-
 ---
 
 ## 🗺️ Route Navigation Flow
 
-````text
 /
 ├── 🏠 Home (Public)
 ├── 📚 Courses
-│   ├── /courses (Public)
-│   └── /courses/:id (User only)
+│ ├── /courses (Public)
+│ └── /courses/:id (User only)
 ├── ℹ️ About (Public)
 ├── ❓ FAQ (Public)
 ├── ✉️ Contact (Public)
 ├── 🔑 Auth
-│   ├── /login (Public)
-│   └── /register (Public)
+│ ├── /login (Public)
+│ └── /register (Public)
 ├── 🚫 Unauthorized (Public)
 
 👤 /cart (User only)
-👤  /enrollment (User only)
+👤 /enrollment (User only)
 
-
-
-🛠️ Admin Dashboard (/admin/*) [ADMIN]
-  ├── /admin/overview (Admin stats)
-  ├── /admin/table-course (View Courses)
-  ├── /admin/create-course
-  ├── /admin/update-course
-  ├── /admin/delete-course
-  ├── /admin/user-view
-  ├── /admin/user-delete
-  └── /admin/enrollment-view
+🛠️ Admin Dashboard (/admin/\*) [ADMIN]
+├── /admin/overview (Admin stats)
+├── /admin/table-course (View Courses)
+├── /admin/create-course
+├── /admin/update-course
+├── /admin/delete-course
+├── /admin/user-view
+├── /admin/user-delete
+└── /admin/enrollment-view
 
 ---
 
@@ -171,6 +136,38 @@ Dynamic navigation links:
 
 ---
 
+**Vercel Deploy Link**
+
+- Backend Deploy
+
+```bash
+https://edu-care-server-ten.vercel.app
+```
+
+- Frontend Deploy
+
+```bash
+https://edu-care-client-flax.vercel.app
+```
+
+---
+
+**Github Code Link**
+
+- Backend
+
+```bash
+https://github.com/muntasirmoin/Edu-Care-Server.git
+```
+
+- Frontend
+
+```bash
+https://github.com/muntasirmoin/Edu-Care-Client.git
+```
+
+---
+
 ## 🎨 Frontend Tech Stack
 
 - ⚛ **React.js** — Component-based UI library for building interactive interfaces
@@ -209,7 +206,7 @@ Dynamic navigation links:
 
 ```bash
 https://github.com/muntasirmoin/Edu-Care-Server.git
-````
+```
 
 - Frontend
 
