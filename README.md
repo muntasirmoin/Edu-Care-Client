@@ -42,31 +42,38 @@ Edu Care delivers a clean, modern learning marketplace: discover courses, inspec
 
 ## 🗺️ Route Navigation Flow
 
+```text
 /
 ├── 🏠 Home (Public)
 ├── 📚 Courses
-│ ├── /courses (Public)
-│ └── /courses/:id (User only)
+│   ├── /courses (Public)
+│   └── /courses/:id (User only)
 ├── ℹ️ About (Public)
 ├── ❓ FAQ (Public)
 ├── ✉️ Contact (Public)
 ├── 🔑 Auth
-│ ├── /login (Public)
-│ └── /register (Public)
+│   ├── /login (Public)
+│   └── /register (Public)
 ├── 🚫 Unauthorized (Public)
 
 👤 /cart (User only)
-👤 /enrollment (User only)
+👤  /enrollment (User only)
 
-🛠️ Admin Dashboard (/admin/\*) [ADMIN]
-├── /admin/overview (Admin stats)
-├── /admin/table-course (View Courses)
-├── /admin/create-course
-├── /admin/update-course
-├── /admin/delete-course
-├── /admin/user-view
-├── /admin/user-delete
-└── /admin/enrollment-view
+
+
+
+
+🛠️ Admin Dashboard (/admin/*) [ADMIN]
+  ├── /admin/overview (Admin stats)
+  ├── /admin/table-course (View Courses)
+  ├── /admin/create-course
+  ├── /admin/update-course
+  ├── /admin/delete-course
+  ├── /admin/user-view
+  ├── /admin/user-delete
+  └── /admin/enrollment-view
+
+```
 
 ---
 
