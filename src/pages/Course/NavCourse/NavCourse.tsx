@@ -56,6 +56,10 @@ export default function NavCourse() {
         error?.data?.message === "You are not permitted to view this route!!!"
       ) {
         toast.error(`You are not permitted`);
+      } else if (
+        error?.message === "You are not permitted to view this route!!!"
+      ) {
+        toast.error(`You are not permitted`);
       } else {
         toast.error("Failed to add item to cart");
       }

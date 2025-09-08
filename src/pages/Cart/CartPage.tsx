@@ -78,7 +78,7 @@ const CartPage = () => {
 
   if (!cartData || cartData.data.length === 0) {
     return (
-      <div className="mt-5 ">
+      <div className="min-h-screen py-5 bg-white dark:bg-violet-800">
         <TitleSubTitle title="🛒 Your Shopping Cart 🛒" subtitle="Its Empty!" />
       </div>
     );

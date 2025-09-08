@@ -34,7 +34,7 @@ const Enrollment = () => {
 
   if (!data || data.data.length === 0) {
     return (
-      <div className="mt-5 ">
+      <div className="py-5 min-h-screen bg-white dark:bg-violet-800">
         <TitleSubTitle
           title=" You have not enrolled in any course"
           subtitle="Its Empty!"
