@@ -19,8 +19,29 @@ export const userApi = baseApi.injectEndpoints({
       providesTags: ["USER"],
     }),
 
+    // get all user
+    getUsers: builder.query({
+      query: (params) => {
+        if (!params) {
+          return {
+            url: "/user",
+            method: "GET",
+          };
+        }
+
+        // If params exist, pass them (page & limit)
+        return {
+          url: "/user",
+          method: "GET",
+          params,
+        };
+      },
+      providesTags: ["USER"],
+      // transformResponse: (response) => response.data,
+    }),
+
     //
   }),
 });
 
-export const { useUserInfoQuery } = userApi;
+export const { useUserInfoQuery, useGetUsersQuery } = userApi;

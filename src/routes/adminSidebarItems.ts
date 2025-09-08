@@ -6,6 +6,7 @@ import type { ISidebarItem } from "@/types";
 import ViewCourse from "@/components/modules/Course/ViewCourse";
 import UpdateCourse from "@/components/modules/Course/UpdateCourse";
 import DeleteCourse from "@/components/modules/Course/DeleteCourse";
+import UserView from "@/pages/Admin/USER/UserView";
 
 export const adminSidebarItems: ISidebarItem[] = [
   {
@@ -42,6 +43,18 @@ export const adminSidebarItems: ISidebarItem[] = [
         title: "Delete Course",
         url: "/admin/delete-course",
         component: DeleteCourse,
+      },
+    ],
+  },
+
+  // user
+  {
+    title: "User",
+    items: [
+      {
+        title: "View",
+        url: "/admin/user-view",
+        component: UserView,
       },
     ],
   },
