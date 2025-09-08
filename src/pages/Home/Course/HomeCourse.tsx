@@ -49,6 +49,10 @@ export default function HomeCourse() {
         toast.error(`${error?.data?.message}`);
       } else if (error?.data?.message === "Course already in cart") {
         toast.error(`${error?.data?.message}`);
+      } else if (
+        error?.data?.message === "You are not permitted to view this route!!!"
+      ) {
+        toast.error(`You are not permitted`);
       } else {
         toast.error("Failed to add item to cart");
         // navigate("/login");
