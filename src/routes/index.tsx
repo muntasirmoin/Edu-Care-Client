@@ -18,6 +18,7 @@ import CourseDetailsPage from "@/pages/Course/NavCourse/CourseDetailsPage";
 import CartPage from "@/pages/Cart/CartPage";
 import Enrollment from "@/pages/Enrollement/Enrollement";
 import FAQPage from "@/pages/Faq/FAQPage";
+import GlobalError from "@/components/layout/GlobalError";
 export const router = createBrowserRouter([
   {
     Component: App,
@@ -26,38 +27,45 @@ export const router = createBrowserRouter([
       {
         Component: Home,
         index: true,
+        errorElement: <GlobalError />,
       },
 
       {
         Component: Contact,
         path: "contact",
+        errorElement: <GlobalError />,
       },
       {
         Component: FAQPage,
         path: "faq",
+        errorElement: <GlobalError />,
       },
       {
         Component: NavCourse,
         path: "courses",
+        errorElement: <GlobalError />,
       },
       {
         Component: withAuth(CourseDetailsPage, role.USER as TRole),
         path: "/courses/:id",
+        errorElement: <GlobalError />,
       },
       {
         Component: withAuth(CartPage, role.USER as TRole),
         path: "/cart",
+        errorElement: <GlobalError />,
       },
       {
         Component: withAuth(Enrollment, role.USER as TRole),
         path: "/enrollment",
+        errorElement: <GlobalError />,
       },
     ],
   },
   {
     Component: Unauthorized,
     path: "/unauthorized",
-    // errorElement: <GlobalError />,
+    errorElement: <GlobalError />,
   },
 
   {
@@ -75,7 +83,7 @@ export const router = createBrowserRouter([
   {
     Component: withAuth(DashboardLayout, role.USER as TRole),
     path: "/user",
-    // errorElement: <GlobalError />,
+    errorElement: <GlobalError />,
     children: [
       { index: true, element: <Navigate to="/user/user-overview" /> },
       ...generateRoutes(userSidebarItems),
@@ -86,7 +94,7 @@ export const router = createBrowserRouter([
   {
     Component: withAuth(DashboardLayout, role.ADMIN as TRole),
     path: "/admin",
-    // errorElement: <GlobalError />,
+    errorElement: <GlobalError />,
     children: [
       { index: true, element: <Navigate to="/admin/overview" /> },
       ...generateRoutes(adminSidebarItems),

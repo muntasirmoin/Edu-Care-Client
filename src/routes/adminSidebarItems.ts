@@ -7,13 +7,14 @@ import ViewCourse from "@/components/modules/Course/ViewCourse";
 import UpdateCourse from "@/components/modules/Course/UpdateCourse";
 import DeleteCourse from "@/components/modules/Course/DeleteCourse";
 import UserView from "@/pages/Admin/USER/UserView";
+import EnrollmentView from "@/pages/Admin/Enrollment/EnrollmentView";
 
 export const adminSidebarItems: ISidebarItem[] = [
   {
-    title: "Overview",
+    title: "Explore",
     items: [
       {
-        title: "Summary",
+        title: "View Records",
         url: "/admin/overview",
         component: AdminOverView,
       },
@@ -55,6 +56,18 @@ export const adminSidebarItems: ISidebarItem[] = [
         title: "View",
         url: "/admin/user-view",
         component: UserView,
+      },
+    ],
+  },
+
+  // enrollment
+  {
+    title: "Enrollment",
+    items: [
+      {
+        title: "View",
+        url: "/admin/enrollment-view",
+        component: EnrollmentView,
       },
     ],
   },

@@ -22,10 +22,28 @@ export const enrollmentApi = baseApi.injectEndpoints({
       providesTags: ["ENROLLMENT"],
       // transformResponse: (response) => response.data,
     }),
-    //
-  }),
+    //  all enrollment
+    getAllEnrollments: builder.query({
+      query: (params) => {
+        if (!params) {
+          return {
+            url: "/enrollment",
+            method: "GET",
+          };
+        }
 
-  //
+        // If params exist, pass them (page & limit)
+        return {
+          url: "/enrollment",
+          method: "GET",
+          params,
+        };
+      },
+      providesTags: ["ENROLLMENT"],
+      // transformResponse: (response) => response.data,
+    }),
+  }),
 });
 
-export const { useGetMyEnrollmentsQuery } = enrollmentApi;
+export const { useGetMyEnrollmentsQuery, useGetAllEnrollmentsQuery } =
+  enrollmentApi;
