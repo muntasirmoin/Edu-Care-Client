@@ -31,7 +31,7 @@ export default function CourseDetailsPage() {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       if (error?.data?.message === "Already enrolled in this course") {
-        toast.error(`Please Login!:${error?.data?.message}`);
+        toast.error(`${error?.data?.message}`);
       } else if (error?.data?.message === "Course not found") {
         toast.error(`${error?.data?.message}`);
       } else if (error?.data?.message === "Course already in cart") {

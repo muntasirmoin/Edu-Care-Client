@@ -32,6 +32,17 @@ const Enrollment = () => {
 
   console.log("enrollmentData", data);
 
+  if (!data || data.data.length === 0) {
+    return (
+      <div className="mt-5 ">
+        <TitleSubTitle
+          title=" You have not enrolled in any course"
+          subtitle="Its Empty!"
+        />
+      </div>
+    );
+  }
+
   if (isLoading) {
     return (
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

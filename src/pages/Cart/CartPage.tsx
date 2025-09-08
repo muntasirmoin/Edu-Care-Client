@@ -8,6 +8,7 @@ import {
 import type { ICartItem } from "@/types/caertInterface";
 import { Skeleton } from "@/components/ui/skeleton";
 import TitleSubTitle from "@/components/layout/Shared/TitleSubTitle";
+import Swal from "sweetalert2";
 
 const CartPage = () => {
   const navigate = useNavigate();
@@ -32,10 +33,22 @@ const CartPage = () => {
   const [checkoutCart, { isLoading }] = useCheckoutCartMutation();
 
   const handleCheckout = async () => {
+    const confirm = await Swal.fire({
+      title: "Confirm Checkout",
+      text: "Do you want to complete the checkout and enroll in the courses?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonText: "Yes, Checkout",
+      cancelButtonText: "Cancel",
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+    });
+
+    if (!confirm.isConfirmed) return;
     try {
       await checkoutCart().unwrap(); // call backend
       toast.success("Checkout successful! Courses enrolled.");
-      navigate("/cart"); // redirect to success page
+      navigate("/enrollment"); // redirect to success page
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       toast.error(error.data?.message || "Checkout failed. Please try again.");
