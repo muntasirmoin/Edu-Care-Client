@@ -99,7 +99,7 @@ export default function NavCourse() {
   }
 
   return (
-    <div className="bg-violet-50 dark:bg-violet-900 py-8 px-4 sm:px-6 lg:px-12">
+    <div className="bg-violet-50 dark:bg-violet-900 py-4 px-4 sm:px-6 lg:px-12">
       <TitleSubTitle
         title="Our Popular Courses"
         subtitle="Explore the top trending courses today"

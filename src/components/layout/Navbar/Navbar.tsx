@@ -32,7 +32,7 @@ import { useAppDispatch } from "@/redux/hook";
 const navigationLinks = [
   { href: "/", label: "Home", icon: HomeIcon, role: "PUBLIC" },
   { href: "/courses", label: "Courses", role: "PUBLIC" },
-  { href: "#", label: "About", icon: FileTextIcon, role: "PUBLIC" },
+  { href: "/about", label: "About", icon: FileTextIcon, role: "PUBLIC" },
   { href: "/faq", label: "Faq", icon: UsersIcon, role: "PUBLIC" },
   { href: "/contact", label: "Contact", icon: UsersIcon, role: "PUBLIC" },
   { href: "/enrollment", label: "Enrollment", role: role.USER },

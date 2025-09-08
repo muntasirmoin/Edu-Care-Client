@@ -24,7 +24,7 @@ export default function Contact() {
   };
 
   return (
-    <div className="bg-violet-50 dark:bg-violet-900 py-12 px-4 sm:px-6 lg:px-12">
+    <div className="bg-violet-50 dark:bg-violet-900 py-4 px-4 sm:px-6 lg:px-12">
       <div className="max-w-6xl mx-auto">
         {/* Title & Subtitle */}
         <TitleSubTitle

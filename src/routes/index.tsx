@@ -19,6 +19,7 @@ import CartPage from "@/pages/Cart/CartPage";
 import Enrollment from "@/pages/Enrollement/Enrollement";
 import FAQPage from "@/pages/Faq/FAQPage";
 import GlobalError from "@/components/layout/GlobalError";
+import About from "@/pages/About/About";
 export const router = createBrowserRouter([
   {
     Component: App,
@@ -33,6 +34,11 @@ export const router = createBrowserRouter([
       {
         Component: Contact,
         path: "contact",
+        errorElement: <GlobalError />,
+      },
+      {
+        Component: About,
+        path: "about",
         errorElement: <GlobalError />,
       },
       {

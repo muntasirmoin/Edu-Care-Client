@@ -54,7 +54,7 @@ export const faqData: { question: string; answer: string }[] = [
 const FAQPage = () => {
   let isLoading;
   return (
-    <div className="bg-violet-50 dark:bg-gray-900 py-8 px-4 sm:px-6 lg:px-8 min-h-screen">
+    <div className="bg-violet-50 dark:bg-violet-900  py-4 px-4 sm:px-6 lg:px-8 min-h-screen">
       <div className="max-w-4xl mx-auto">
         {/* Page Title */}
         <TitleSubTitle
