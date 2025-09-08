@@ -96,13 +96,6 @@ Edu Care delivers a clean, modern learning marketplace: discover courses, inspec
 - `/cart` → View cart (**User only**)
 - `/enrollment` → My enrollments (**User only**)
 
-### User Dashboard (`/user/*`)
-
-Role: **USER**
-
-- `/user/user-overview` → Overview Dashboard
-- (Generated from `userSidebarItems`) → Additional user modules
-
 ---
 
 ## 🛠️ Admin Pages
