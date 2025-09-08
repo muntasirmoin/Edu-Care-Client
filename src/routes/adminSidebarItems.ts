@@ -8,6 +8,7 @@ import UpdateCourse from "@/components/modules/Course/UpdateCourse";
 import DeleteCourse from "@/components/modules/Course/DeleteCourse";
 import UserView from "@/pages/Admin/USER/UserView";
 import EnrollmentView from "@/pages/Admin/Enrollment/EnrollmentView";
+import UserDelete from "@/pages/Admin/USER/UserDelete";
 
 export const adminSidebarItems: ISidebarItem[] = [
   {
@@ -56,6 +57,11 @@ export const adminSidebarItems: ISidebarItem[] = [
         title: "View",
         url: "/admin/user-view",
         component: UserView,
+      },
+      {
+        title: "Delete User",
+        url: "/admin/user-delete",
+        component: UserDelete,
       },
     ],
   },

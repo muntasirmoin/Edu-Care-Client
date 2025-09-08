@@ -1,4 +1,5 @@
 import { baseApi } from "@/redux/baseApi";
+import type { IUser } from "@/types/caertInterface";
 
 export const userApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -41,7 +42,22 @@ export const userApi = baseApi.injectEndpoints({
     }),
 
     //
+    softDeleteUser: builder.mutation<
+      IUser,
+      { id: string; payload: Partial<IUser> }
+    >({
+      query: ({ id, payload }) => ({
+        url: `/user/${id}`,
+        method: "PATCH",
+        data: payload, // <-- must be `data` for Axios
+        headers: { "Content-Type": "application/json" },
+      }),
+      invalidatesTags: ["USER"],
+    }),
+
+    //
   }),
 });
 
-export const { useUserInfoQuery, useGetUsersQuery } = userApi;
+export const { useUserInfoQuery, useGetUsersQuery, useSoftDeleteUserMutation } =
+  userApi;
