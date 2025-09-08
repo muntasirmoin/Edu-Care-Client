@@ -167,7 +167,7 @@ export default function Navbar() {
               <Button
                 onClick={handleLogout}
                 // variant="outline"
-                className="bg-violet-700 hover:bg-violet-800 dark:bg-violet-200 dark:hover:bg-violet-300 text-white dark:text-gray-900 font-semibold px-6 py-3 rounded-lg shadow-lg transition-all"
+                className="bg-violet-700 cursor-pointer hover:bg-violet-800 dark:bg-violet-200 dark:hover:bg-violet-300 text-white dark:text-gray-900 font-semibold px-6 py-3 rounded-lg shadow-lg transition-all"
               >
                 Logout
               </Button>
