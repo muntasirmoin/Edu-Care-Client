@@ -54,7 +54,6 @@ export default function NavCourse() {
         toast.error(`${error?.data?.message}`);
       } else {
         toast.error("Failed to add item to cart");
-        navigate("/login");
       }
     }
   };
