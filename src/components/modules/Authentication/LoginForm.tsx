@@ -52,6 +52,22 @@ export function LoginForm({
     }
   };
 
+  //
+  // demo login handler
+  const handleDemoLogin = (role: "user" | "admin") => {
+    let creds = { email: "", password: "" };
+    if (role === "user")
+      creds = { email: "user@gmail.com", password: "Muntasir1!" };
+    if (role === "admin")
+      creds = { email: "admin@gmail.com", password: "Muntasir1!" };
+
+    form.setValue("email", creds.email);
+    form.setValue("password", creds.password);
+    form.handleSubmit(onSubmit)(); // directly submit
+  };
+
+  //
+
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <div className="flex flex-col items-center gap-2 text-center text-white">
@@ -103,6 +119,26 @@ export function LoginForm({
                 </FormItem>
               )}
             />
+
+            {/*  */}
+
+            {/* Demo Login Buttons */}
+            <div className="flex flex-col sm:flex-row sm:justify-between gap-2">
+              <Button
+                onClick={() => handleDemoLogin("user")}
+                className="sm:w-auto cursor-pointer text-white bg-violet-700 hover:bg-violet-800 hover:border-green-100"
+              >
+                Login as User
+              </Button>
+              <Button
+                onClick={() => handleDemoLogin("admin")}
+                className="sm:w-auto cursor-pointer text-white bg-violet-700 hover:bg-violet-800 hover:border-green-100"
+              >
+                Login as Admin
+              </Button>
+            </div>
+
+            {/*  */}
 
             <Button
               type="submit"
