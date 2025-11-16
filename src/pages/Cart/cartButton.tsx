@@ -14,10 +14,7 @@ export function CartButton() {
         variant="ghost"
         className="
           relative flex items-center gap-2 cursor-pointer
-          text-violet-600 dark:text-violet-300
-          hover:text-violet-700 dark:hover:text-violet-100
-          hover:bg-violet-300/30 dark:hover:bg-violet-700/30
-          transition
+         
         "
       >
         <ShoppingCart className="h-5 w-5" />
