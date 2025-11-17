@@ -97,7 +97,7 @@ const CartPage = () => {
       </h1> */}
       <TitleSubTitle
         title="🛒 Your Shopping Cart 🛒"
-        subtitle="Review your to checkout"
+        subtitle="Review your courses and proceed to checkout"
       />
       {/* Total & Checkout */}
       <div className="mt-3 mb-3 flex flex-col sm:flex-row justify-between items-center gap-4">
