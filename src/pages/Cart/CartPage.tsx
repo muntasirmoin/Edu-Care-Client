@@ -111,7 +111,7 @@ const CartPage = () => {
           disabled={isLoading || !cartData?.data?.length}
           className="bg-green-500 mr-0.5  cursor-pointer hover:bg-green-600 dark:bg-green-700 dark:hover:bg-green-600 text-white font-bold py-3 px-6 rounded-xl shadow-lg transition-all text-lg"
         >
-          {isLoading ? "Processing..." : "Checkout"}
+          {isLoading ? "" : "Checkout"}
         </button>
       </div>
 
