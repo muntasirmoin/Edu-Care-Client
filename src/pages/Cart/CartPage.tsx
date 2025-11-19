@@ -137,7 +137,7 @@ const CartPage = () => {
                   key={item._id}
                   className={`border-b border-gray-200 dark:border-violet-700 transition ${
                     isSoldOut
-                      ? ""
+                      ? "bg-red-50 dark:bg-red-900 text-red-600 dark:text-red-300"
                       : "bg-white dark:bg-violet-800 text-gray-900 dark:text-white hover:bg-violet-50 dark:hover:bg-violet-900"
                   }`}
                 >
