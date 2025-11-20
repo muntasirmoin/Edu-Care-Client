@@ -152,7 +152,7 @@ const CartPage = () => {
                     <span className="font-semibold">{item.courseId.title}</span>
                     {isSoldOut && (
                       <p className="text-sm font-medium text-red-600 dark:text-red-300 mt-1">
-                        ❌ No seats available — remove from cart
+                        ❌
                       </p>
                     )}
                   </td>
