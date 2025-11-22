@@ -30,7 +30,7 @@ const Enrollment = () => {
 
   const totalPages = data?.meta?.totalPage ?? 1;
 
-  console.log("enrollmentData", data);
+  // console.log("enrollmentData", data);
 
   if (!data || data.data.length === 0) {
     return (
