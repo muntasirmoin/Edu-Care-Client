@@ -93,7 +93,7 @@ function RegisterForm({
 
     try {
       const res = await register(transformedData).unwrap();
-      console.log("res", res);
+      // console.log("res", res);
 
       if (res.success) {
         toast.success("Account Created Successfully");
